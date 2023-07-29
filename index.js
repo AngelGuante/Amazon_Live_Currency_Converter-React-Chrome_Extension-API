@@ -7,5 +7,5 @@ app.listen(3000, () => {
 })
 
 app.get('/', async (req, res) => {
-    res.send(await dop_uds());
+    res.json({'dop_usd': await dop_uds()});
 })
