@@ -6,6 +6,6 @@ app.listen(3000, () => {
     console.log('listening on port 3000')
 })
 
-app.get('/', async (req, res) => {
-    res.json({'dop_usd': await dop_uds()});
+app.get('/', async (_, res) => {
+    res.json({'dop_usd': Number(await dop_uds())});
 })
