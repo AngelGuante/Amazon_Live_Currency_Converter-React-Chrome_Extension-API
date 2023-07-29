@@ -11,6 +11,6 @@ app.listen(3000, () => {
     console.log('listening on port 3000')
 })
 
-app.get('/', async (_, res) => {
-    res.json({ 'dop_usd': Number(await dop_uds()) });
+app.get('/Currency', async (req, res) => {
+    res.json({ 'currencys': `${req.query.currency1} -> ${req.query.currency2}`, 'currency-amount': Number(await dop_uds(req.query.currency1, req.query.currency2)) });
 })
