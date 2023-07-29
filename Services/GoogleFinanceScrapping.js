@@ -6,12 +6,6 @@ const url = 'https://www.google.com/search?q=usd+to+dop&oq=us&gs_lcrp=EgZjaHJvbW
 const dop_uds = async () => {
     const browser = await puppeteer.launch({
         headless: 'new',
-        args: [
-            "--disable-setuid-sandbox",
-            "--no-sandbox",
-            "--single-process",
-            "--no-zygote"
-        ],
         executablePath: process.env.NODE_ENV === "production" ?
             process.env.PUPPETEER_EXECUTABLE_PATH :
             puppeteer.executablePath()
