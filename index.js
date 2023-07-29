@@ -3,12 +3,12 @@ const cors = require('cors')
 const express = require('express')
 const app = express()
 
+app.use(cors({
+    origin: '*',
+}))
+
 app.listen(3000, () => {
     console.log('listening on port 3000')
-})
-
-module.exports = cors({
-    origin: '*',
 })
 
 app.get('/', async (_, res) => {
