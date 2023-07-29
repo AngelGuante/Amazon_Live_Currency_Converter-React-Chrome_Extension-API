@@ -1,10 +1,20 @@
 const puppeteer = require('puppeteer')
+require('dotenv').config()
 
 const url = 'https://www.google.com/search?q=usd+to+dop&oq=us&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYQDIGCAMQRRg7MgYIBBBFGDsyBggFEEUYPTIGCAYQRRg8MgYIBxBFGD3SAQg0ODY5ajFqN6gCALACAA&sourceid=chrome&ie=UTF-8'
 
 const dop_uds = async () => {
     const browser = await puppeteer.launch({
         headless: 'new',
+        args: [
+            "--disable-setuid-sandbox",
+            "--no-sandbox",
+            "--single-process",
+            "--no-zygote"
+        ],
+        executablePath: process.env.NODE_ENV === "production" ?
+            process.env.PUPPETEER_EXECUTABLE_PATH :
+            puppeteer.executablePath()
     })
 
     const page = await browser.newPage()
